@@ -17,12 +17,37 @@ To interface a digital sensor with an STM32 microcontroller and automatically co
 | 7 | USB cable | 1 |
 
 ## Algorithm
-
+1. Start the program.
+2. Configure Port 2 as output.
+3. Turn LED ON.
+4. Generate delay.
+5. Turn LED OFF.
+6. Generate delay.
+7. Repeat forever.
 
 
 ## Program
+8051 Assembly Program
+ORG 0000H
 
+START:
+    MOV P2,#00H      ; LED ON (active LOW)
+    ACALL DELAY
+    MOV P2,#0FFH     ; LED OFF
+    ACALL DELAY
+    SJMP START
 
+DELAY:
+    MOV R7,#255
+L1: MOV R6,#255
+L2: DJNZ R6,L2
+    DJNZ R7,L1
+    RET
+
+END
+
+## OUTPUT
+<img width="716" height="717" alt="image" src="https://github.com/user-attachments/assets/928fa29c-b750-4750-a9bf-9277b6239ac8" />
 
 ## Result
 
