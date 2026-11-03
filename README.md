@@ -30,6 +30,7 @@ To interface a digital sensor with an STM32 microcontroller and automatically co
 ORG 0000H
 
 START:
+
     MOV P2,#00H      ; LED ON (active LOW)
     ACALL DELAY
     MOV P2,#0FFH     ; LED OFF
@@ -37,6 +38,7 @@ START:
     SJMP START
 
 DELAY:
+
     MOV R7,#255
 L1: MOV R6,#255
 L2: DJNZ R6,L2
